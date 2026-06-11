@@ -1,0 +1,144 @@
+/*
+ * app_layout.css — Estilos del shell de aplicación (escritorio y móvil).
+ * Sidebar, cabecera, navegación inferior y hoja modal "Más".
+ */
+
+/**
+ * app_layout.dart → CSS
+ */
+
+/* Padding estándar del área de contenido desplazable de cada página */
+.krono-scroll-page {
+  padding: var(--krono-xl);
+}
+
+/* --- Layout de escritorio: sidebar fijo + área principal --- */
+.AppShell--desktop {
+  min-height: 100vh;
+  background: var(--krono-surface1);
+}
+
+/* Barra lateral izquierda: marca, navegación y cierre de sesión */
+.AppShell-sidebar {
+  width: 240px;
+  background: var(--krono-background);
+  flex-shrink: 0;
+}
+.AppShell-sidebar-brand {
+  padding: 24px 20px 28px;
+}
+.AppShell-sidebar-logo {
+  width: 32px;
+  height: 32px;
+  background: var(--krono-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.AppShell-sidebar-logo .material-symbols-outlined { font-size: 18px; }
+.AppShell-sidebar-title { font-weight: 700; font-size: 17px; }
+.AppShell-sidebar-nav { padding: 0 12px; overflow-y: auto; flex: 1; }
+.AppShell-sidebar-logout { padding: 12px; }
+
+/* Ítems del menú lateral: estado normal y activo con borde primario */
+._SidebarItem {
+  margin: 2px 0;
+  border-radius: var(--krono-radius-md);
+}
+._SidebarItem--active {
+  background: var(--krono-primary-soft);
+  border-left: 3px solid var(--krono-primary);
+}
+._SidebarItem-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  border-radius: var(--krono-radius-md);
+  color: var(--krono-foreground);
+  font-size: 14px;
+  font-weight: 500;
+}
+._SidebarItem--active ._SidebarItem-link {
+  color: var(--krono-primary);
+  font-weight: 600;
+}
+._SidebarItem-link .material-symbols-outlined {
+  font-size: 18px;
+  margin-right: 10px;
+  color: var(--krono-muted);
+}
+._SidebarItem--active ._SidebarItem-link .material-symbols-outlined {
+  color: var(--krono-primary);
+}
+
+/* Barra superior de escritorio: breadcrumbs, búsqueda y perfil de usuario */
+._DesktopHeader {
+  height: 64px;
+  background: var(--krono-background);
+  padding: 0 24px;
+}
+._DesktopHeader-search { width: 280px; }
+._DesktopHeader-search .form-control {
+  background: var(--krono-surface1);
+  font-size: 14px;
+  padding: 8px 12px;
+}
+._DesktopHeader-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--krono-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+._DesktopHeader-userName { font-size: 13px; font-weight: 600; }
+._DesktopHeader-userRol { font-size: 11px; color: var(--krono-muted); }
+
+/* Columna principal: cabecera + contenido desplazable de la página activa */
+.AppShell-main { flex: 1; min-width: 0; }
+.AppShell-main-content {
+  background: var(--krono-surface1);
+  overflow: auto;
+  flex: 1;
+}
+
+/* --- Layout móvil: navbar, contenido y bottom navigation fija --- */
+/* Mobile shell */
+._MobileShell .navbar {
+  background: var(--krono-background);
+  border-bottom: 1px solid var(--krono-border);
+  height: 56px;
+}
+._MobileShell-bottomNav {
+  background: var(--krono-background);
+  border-top: 1px solid var(--krono-border);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+._MobileShell-bottomNav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  text-decoration: none;
+  color: var(--krono-muted);
+  font-size: 11px;
+  border: none;
+  background: transparent;
+}
+._MobileShell-bottomNav-item--active { color: var(--krono-primary); }
+._MobileShell-bottomNav-item .material-symbols-outlined { font-size: 22px; }
+._MobileShell-body { padding-bottom: 64px; }
+
+/* Lista del modal "Más" en vista móvil */
+._MoreSheet .list-group-item { border: none; padding: 12px 20px; }

@@ -1,0 +1,32 @@
+/**
+ * dashboard/css/dashboard.css
+ * Estilos del panel principal (dashboard).
+ * Complementa las tarjetas y widgets definidos en global/css.
+ */
+
+/* Área de contenido con padding del tema */
+.DashboardScreen {
+  padding: var(--krono-xl);
+}
+
+/* Ancho fijo de cada tarjeta de métrica en la fila superior */
+.DashboardScreen-metrics .MetricCard-wrap {
+  width: 240px;
+}
+
+/* Altura del contenedor del gráfico de ventas (Chart.js responsive) */
+.DashboardScreen-chartWrap {
+  height: 220px;
+}
+
+/* Feed de actividad reciente: filas con icono, texto y hora */
+._ActivityFeed-item {
+  padding: 8px 0;
+}
+
+/* Fondo del icono Material en cada ítem del feed */
+._ActivityFeed-icon {
+  padding: 6px;
+  background: var(--krono-surface2);
+  border-radius: 6px;
+}

@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Ventas (TPV) — estilos del módulo
+   Layout de catálogo, carrito y comportamiento responsive móvil/escritorio.
+   ========================================================================== */
+
+/* Pestañas de navegación móvil (Productos / Carrito) */
+.VentasScreen-mobileTabs .nav-link {
+  color: var(--krono-muted);
+  border: none;
+}
+.VentasScreen-mobileTabs .nav-link.active {
+  color: var(--krono-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--krono-primary);
+}
+
+/* Contenedor principal de la pantalla de ventas */
+.VentasScreen-row {
+  min-height: 520px;
+}
+
+/* Cuadrícula de tarjetas de producto */
+.VentasScreen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+/* Tarjeta individual de producto en el catálogo */
+.VentasScreen-product {
+  border: 1px solid var(--krono-border);
+  border-radius: var(--krono-radius-lg);
+  padding: 12px;
+  background: var(--krono-background);
+  cursor: pointer;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.VentasScreen-product {
+  box-shadow: 0 1px 8px rgba(22,27,31,0.04);
+}
+.VentasScreen-product:hover {
+  border-color: var(--krono-primary);
+}
+.VentasScreen-productThumb {
+  width: 100%;
+  height: 60px;
+  border-radius: 8px;
+  background: var(--krono-surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--krono-muted);
+  margin-bottom: 8px;
+}
+.VentasScreen-product .producto-nombre{
+  font-weight:600;
+  color:var(--krono-text);
+  margin-bottom:6px;
+}
+.VentasScreen-product .producto-precio{
+  color:var(--krono-primary);
+  font-weight:700;
+}
+
+/* Panel del carrito de compra */
+.VentasScreen-cartWrap {
+  width: 100%;
+  background: var(--krono-surface1);
+  border-top: 1px solid var(--krono-border);
+}
+
+/* Ancho fijo del carrito en escritorio */
+@media (min-width: 992px) {
+  .VentasScreen-cartWrap {
+    width: 380px;
+    border-top: none;
+    border-left: 1px solid var(--krono-border);
+  }
+}
+.VentasScreen-cartInner {
+  padding: var(--krono-lg);
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+.VentasScreen-cartSummary {
+  border-top: 1px dashed rgba(0,0,0,0.04);
+  padding-top:12px;
+  margin-top:12px;
+}
+.VentasScreen-cartTotal {
+  font-weight:800;
+  font-size:1.05rem;
+}
+.VentasScreen-cartActions .btn-krono-primary{
+  width:100%;
+  padding:10px 14px;
+}
+.VentasScreen-cartList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Vista móvil: mostrar solo productos o solo carrito según pestaña activa */
+@media (max-width: 991.98px) {
+  .ventas--productos .VentasScreen-cartWrap {
+    display: none !important;
+  }
+  .ventas--cart .VentasScreen-products {
+    display: none !important;
+  }
+  .ventas--cart .VentasScreen-cartWrap {
+    display: block !important;
+  }
+}
+@media (min-width: 992px) {
+  .VentasScreen-products,
+  .VentasScreen-cartWrap {
+    display: block !important;
+  }
+}

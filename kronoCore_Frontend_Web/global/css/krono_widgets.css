@@ -1,0 +1,72 @@
+/*
+ * krono_widgets.css — Estilos de widgets reutilizables de la UI.
+ * Tarjetas, métricas, chips de estado y avatares circulares.
+ */
+
+/**
+ * krono_widgets.dart → CSS
+ */
+
+/* Contenedor genérico con borde y sombra suave */
+/* KronoCard */
+.KronoCard {
+  padding: var(--krono-lg);
+  background: var(--krono-background);
+  border-radius: var(--krono-radius-lg);
+  border: 1px solid var(--krono-border);
+  box-shadow: var(--krono-shadow-sm);
+}
+.KronoCard--padding-zero { padding: 0; }
+
+/* Tarjeta de indicador (KPI) con icono, delta y valor */
+/* MetricCard */
+.MetricCard .MetricCard-iconWrap {
+  padding: 8px;
+  border-radius: var(--krono-radius-md);
+}
+.MetricCard .MetricCard-delta {
+  padding: 2px 8px;
+  border-radius: var(--krono-radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+}
+.MetricCard .MetricCard-titulo {
+  color: var(--krono-muted);
+  font-size: 12px;
+  margin-top: var(--krono-lg);
+}
+.MetricCard .MetricCard-valor {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--krono-foreground);
+  margin-top: 4px;
+}
+
+/* Etiqueta pill de estado (confirmada, pendiente, etc.) */
+/* StatusChip */
+.StatusChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--krono-radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.StatusChip .material-symbols-outlined {
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+/* Iniciales del usuario en círculo con color de fondo HSL */
+/* AvatarCircle */
+.AvatarCircle {
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  flex-shrink: 0;
+}

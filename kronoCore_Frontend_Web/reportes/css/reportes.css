@@ -1,0 +1,26 @@
+/* ==========================================================================
+   Informes — estilos del módulo
+   Métricas, tarjetas de resumen y panel de filtros de exportación.
+   ========================================================================== */
+
+/* Contenedor principal de la pantalla */
+.ReportesScreen {
+  padding: 24px;
+}
+
+/* Tarjetas Krono dentro de la pantalla de informes */
+.ReportesScreen .krono-card {
+  border-radius: 20px;
+}
+
+/* Tarjeta individual de métrica (clientes, citas, etc.) */
+.ReportesScreen .metric-card{
+  border-radius:12px;
+  padding:14px;
+  box-shadow:0 1px 8px rgba(22,27,31,0.04);
+  background:var(--krono-background);
+  border:1px solid var(--krono-border);
+}
+
+/* Contenedor del bloque de filtros de exportación */
+.ReportesScreen .filters-wrap{border-radius:12px;border:1px solid var(--krono-border);background:var(--krono-surface1);padding:12px}

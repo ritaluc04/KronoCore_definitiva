@@ -1,0 +1,27 @@
+# PostgreSQL local para KronoCore (desarrollo / pruebas de migración)
+# Uso:  docker compose up -d
+# Luego: run_krono_backend_postgres.bat  (o mvn spring-boot:run -Dspring-boot.run.profiles=postgres)
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: kronocore-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: kronocore
+      POSTGRES_USER: krono
+      POSTGRES_PASSWORD: krono_secret
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - kronocore_pg_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U krono -d kronocore"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  kronocore_pg_data:

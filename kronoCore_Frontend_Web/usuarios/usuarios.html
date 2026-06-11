@@ -1,0 +1,140 @@
+<!-- =============================================================================
+     Pantalla de Usuarios — KronoCore Frontend Web
+     Gestión de usuarios del equipo (solo administradores): invitar y editar.
+     ============================================================================= -->
+<!DOCTYPE html>
+<html lang="es">
+<!-- —— Cabecera del documento: meta, título y hojas de estilo —— -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KronoCore · Usuarios</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link href="../global/css/kons.css" rel="stylesheet" />
+  <link href="../global/css/kons_app_theme.css" rel="stylesheet" />
+  <link href="../global/css/krono_widgets.css" rel="stylesheet" />
+  <link href="../global/css/app_layout.css" rel="stylesheet" />
+  <link href="css/usuarios.css" rel="stylesheet" />
+</head>
+<body class="krono-app" data-route="/ajustes/usuarios">
+  <!-- Shell de navegación lateral (inyectado por app_layout.js) -->
+  <div id="app-shell-mount"></div>
+  <!-- Contenido principal de gestión de usuarios -->
+  <div id="page-content">
+    <div class="UsuariosScreen krono-scroll-page">
+      <!-- Cabecera: título y botón invitar usuario -->
+      <div class="d-flex flex-row align-items-center mb-3">
+        <h2 class="krono-headline-medium mb-0">Usuarios</h2>
+        <div class="flex-fill"></div>
+        <button type="button" class="btn btn-krono-primary" id="btnInvitarUsuario">
+          <span class="material-symbols-outlined me-1" style="font-size:18px;vertical-align:middle">add</span>
+          Invitar usuario
+        </button>
+      </div>
+      <!-- Listado de usuarios (renderizado dinámicamente por usuarios_screen_controller.js) -->
+      <div id="usuariosListWrap"></div>
+    </div>
+  </div>
+
+  <!-- Modal: invitar nuevo usuario al equipo -->
+  <div class="modal fade" id="inviteEmployeeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Invitar usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="inviteUserForm">
+            <div class="mb-2">
+              <label class="form-label krono-form-label" for="inviteName">Nombre</label>
+              <input type="text" class="form-control krono-form-control" id="inviteName" />
+              <div class="invalid-feedback">Requerido</div>
+            </div>
+            <div class="mb-2">
+              <label class="form-label krono-form-label" for="inviteEmail">Email</label>
+              <input type="email" class="form-control krono-form-control" id="inviteEmail" />
+              <div class="invalid-feedback">Requerido</div>
+            </div>
+            <div class="mb-2">
+              <label class="form-label krono-form-label" for="inviteRole">Rol</label>
+              <select class="form-select krono-form-control" id="inviteRole">
+                <option value="empleado" selected>Empleado</option>
+                <option value="jefe">Jefe</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+            <div class="form-check mb-2 mt-3">
+              <input class="form-check-input" type="checkbox" id="inviteActive" checked />
+              <label class="form-check-label" for="inviteActive">Activo</label>
+            </div>
+            <div id="inviteLinkWrap" class="mt-2 d-none">
+              <div class="small text-muted" style="font-size: 12px; user-select: all;" id="inviteLinkText"></div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-krono-text" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-krono-primary" id="btnSendInvite">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: editar rol y estado de un usuario -->
+  <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editUserForm">
+            <input type="hidden" id="editUserId" />
+            <div class="mb-2">
+              <label class="form-label krono-form-label" for="editUserRole">Rol</label>
+              <select class="form-select krono-form-control" id="editUserRole">
+                <option value="ADMIN">Admin</option>
+                <option value="JEFE">Jefe</option>
+                <option value="EMPLEADO">Empleado</option>
+                <option value="CLIENTE">Cliente</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label class="form-label krono-form-label" for="editUserEmpresaId">ID de Empresa</label>
+              <input type="number" class="form-control krono-form-control" id="editUserEmpresaId" placeholder="Ej: 1" />
+              <small class="text-muted">Deja en blanco si no pertenece a una empresa</small>
+            </div>
+            <div class="form-check mb-2 mt-3">
+              <input class="form-check-input" type="checkbox" id="editUserActive" />
+              <label class="form-check-label" for="editUserActive">Verificado / Activo</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-krono-text" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-outline-danger" id="btnDeleteUser">Eliminar</button>
+          <button type="button" class="btn btn-krono-primary" id="btnSaveUser">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dependencias globales y controlador de la pantalla -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../global/js/models.js"></script>
+  <script src="../global/js/session.js"></script>
+  <script src="../global/js/api_client.js"></script>
+  <script src="../global/js/krono_widgets.js"></script>
+  <script src="../global/js/app_layout.js"></script>
+  <script src="js/usuarios_screen_controller.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initAppShell();
+      initUsuariosScreen();
+    });
+  </script>
+</body>
+</html>

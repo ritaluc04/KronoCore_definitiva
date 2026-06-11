@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Board (Kanban) — estilos del módulo
+   Tablero horizontal con columnas, tarjetas y estados de arrastre.
+   ========================================================================== */
+
+/* Contenedor con scroll horizontal del tablero */
+.BoardScreen-board {
+  overflow-x: auto;
+  min-height: 480px;
+  height: 100%;
+}
+
+/* Fila de columnas del Kanban */
+.BoardScreen-columns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 8px;
+  min-width: 1004px;
+  height: 100%;
+}
+
+/* Columna individual del tablero */
+.BoardScreen-column {
+  width: 320px;
+  flex-shrink: 0;
+  border-radius: var(--krono-radius-lg);
+  border: 1px solid transparent;
+  padding: 12px;
+  background: var(--krono-surface2);
+}
+.BoardScreen-column.BoardScreen-column--drag {
+  border-color: var(--krono-info);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+/* Cabecera de cada columna (título, contador, acciones) */
+.BoardScreen-colHead {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+/* Indicador de color por estado de columna */
+.BoardScreen-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Tarjeta de tarea (arrastrable) */
+.BoardScreen-card {
+  margin-bottom: 8px;
+  cursor: grab;
+  padding: 12px;
+}
+.BoardScreen-card:active {
+  cursor: grabbing;
+}
+
+.BoardScreen-columnTitle {
+  color: var(--krono-foreground);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.BoardScreen-columnCount {
+  color: var(--krono-muted);
+  font-size: 12px;
+}
+
+.BoardScreen-columnAdd {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--krono-muted);
+  display: inline-flex;
+  height: 28px;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0;
+  width: 28px;
+}
+
+.BoardScreen-columnAdd:hover {
+  background: var(--krono-surface);
+  color: var(--krono-primary);
+}
+
+.BoardScreen-columnAdd .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.BoardScreen-columnBody {
+  min-height: 360px;
+}
+
+.BoardScreen-cardImg {
+  border-radius: 8px;
+  height: 110px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.BoardScreen-cardHeader,
+.BoardScreen-cardFooter {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.BoardScreen-cardTitle {
+  color: var(--krono-foreground);
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.BoardScreen-cardColor {
+  border: 1px solid var(--krono-border);
+  border-radius: 999px;
+  flex: 0 0 auto;
+  height: 14px;
+  margin-left: 8px;
+  width: 14px;
+}
+
+.BoardScreen-cardDesc {
+  color: var(--krono-muted);
+  display: -webkit-box;
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 4px 0 10px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.BoardScreen-cardFooter {
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.BoardScreen-emptyColumn {
+  border: 1px dashed var(--krono-border);
+  border-radius: 8px;
+  color: var(--krono-muted);
+  font-size: 13px;
+  margin: 0;
+  padding: 18px 12px;
+  text-align: center;
+}

@@ -1,0 +1,59 @@
+/**
+ * Estilos específicos de la pantalla Clientes (listado y filas clicables).
+ * Complementa los tokens y componentes definidos en global/css.
+ */
+
+/* Campo de búsqueda con icono superpuesto a la izquierda */
+.ClientesScreen-search {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+}
+
+.ClientesScreen-searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--krono-muted);
+  pointer-events: none;
+}
+
+.ClientesScreen-search input {
+  padding-left: 40px;
+}
+
+/* Cabecera de columnas de la tabla (visible desde breakpoint md) */
+.ClientesScreen-tableHeader {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--krono-muted);
+}
+
+/* Contenedor del listado de clientes */
+.ClientesScreen-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Fila de cliente: tarjeta clicable con hover */
+.ClientesScreen-row {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ClientesScreen-row:hover {
+  background: var(--krono-surface2);
+}
+
+/* Chips de etiquetas debajo del nombre en cada fila */
+.ClientesScreen-row .ClienteRow-tags {
+  margin-top: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}

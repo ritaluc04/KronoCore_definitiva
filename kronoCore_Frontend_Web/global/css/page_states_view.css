@@ -1,0 +1,45 @@
+/*
+ * page_states_view.css — Estilos de estados de página compartidos.
+ * Carga (spinner), lista vacía y mensaje de error con iconografía.
+ */
+
+/**
+ * page_states_view.dart → CSS
+ */
+
+/* Vista de carga centrada con spinner Bootstrap */
+.LoadingView {
+  padding: var(--krono-xxxl);
+  text-align: center;
+}
+.LoadingView .spinner-border {
+  width: 2rem;
+  height: 2rem;
+  border-width: 2.5px;
+  color: var(--krono-primary);
+}
+
+/* Contenedores compartidos para estado vacío y error */
+.EmptyView,
+.ErrorView {
+  padding: var(--krono-xxxl);
+  text-align: center;
+}
+
+/* Icono grande en círculo gris para listas sin resultados */
+.EmptyView-iconWrap {
+  display: inline-flex;
+  padding: 20px;
+  background: var(--krono-surface2);
+  border-radius: 50%;
+}
+.EmptyView-iconWrap .material-symbols-outlined {
+  font-size: 36px;
+  color: var(--krono-muted);
+}
+
+/* Icono de error en color danger */
+.ErrorView .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--krono-danger);
+}

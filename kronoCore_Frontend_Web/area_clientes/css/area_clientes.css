@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Área de Clientes — estilos del módulo
+   Tarjetas de citas e iconografía del portal del cliente.
+   ========================================================================== */
+
+/* Tarjeta individual de cita */
+.MisCitasScreen-card {
+  margin-bottom: 12px;
+}
+
+/* Icono decorativo de la tarjeta de cita */
+.MisCitasScreen-iconBox {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(29, 78, 216, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--krono-primary);
+}

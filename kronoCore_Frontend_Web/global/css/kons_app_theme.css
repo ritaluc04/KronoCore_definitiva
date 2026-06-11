@@ -1,0 +1,109 @@
+/*
+ * kons_app_theme.css — Tema visual de la app (tipografía, botones, formularios).
+ * Equivalente web de buildKronoTheme() de Flutter.
+ */
+
+/**
+ * kons_app_theme.dart → CSS
+ * ThemeData buildKronoTheme()
+ */
+
+/* Fuente principal Roboto desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+/* Estilos base del cuerpo cuando la página usa la clase krono-app */
+body.krono-app {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--krono-surface1);
+  color: var(--krono-foreground);
+  margin: 0;
+}
+
+/* Escala tipográfica alineada con TextTheme de Material */
+/* TextTheme */
+.krono-display-small { font-size: 32px; font-weight: 700; color: var(--krono-foreground); }
+.krono-headline-medium { font-size: 24px; font-weight: 700; color: var(--krono-foreground); margin: 0; }
+.krono-headline-small { font-size: 20px; font-weight: 600; color: var(--krono-foreground); }
+.krono-title-large { font-size: 18px; font-weight: 600; color: var(--krono-foreground); }
+.krono-title-medium { font-size: 15px; font-weight: 600; color: var(--krono-foreground); }
+.krono-body-large { font-size: 15px; color: var(--krono-foreground); }
+.krono-body-medium { font-size: 14px; color: var(--krono-foreground); }
+.krono-body-small { font-size: 12px; color: var(--krono-muted); }
+.krono-label-large { font-size: 14px; font-weight: 600; }
+
+/* Contenedor tipo CardTheme: fondo, borde y radio grandes */
+/* CardTheme */
+.krono-card-theme {
+  background: var(--krono-background);
+  border: 1px solid var(--krono-border);
+  border-radius: var(--krono-radius-lg);
+  box-shadow: none;
+  margin: 0;
+}
+
+/* Campos de formulario y etiquetas (InputDecorationTheme) */
+/* InputDecorationTheme */
+.krono-form-control {
+  background-color: var(--krono-background);
+  border: 1px solid var(--krono-border);
+  border-radius: var(--krono-radius-md);
+  padding: 12px;
+  font-size: 14px;
+  color: var(--krono-foreground);
+}
+.krono-form-control:focus {
+  border-color: var(--krono-primary);
+  border-width: 2px;
+  box-shadow: none;
+  outline: none;
+}
+.krono-form-label { color: var(--krono-muted); font-size: 14px; }
+
+/* Botón primario relleno (ElevatedButton) */
+/* ElevatedButton */
+.btn-krono-primary {
+  background-color: var(--krono-primary);
+  color: var(--krono-primary-fg);
+  border: none;
+  border-radius: var(--krono-radius-md);
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+}
+.btn-krono-primary:hover,
+.btn-krono-primary:focus {
+  background-color: #1a44c2;
+  color: var(--krono-primary-fg);
+}
+.btn-krono-primary:disabled { opacity: 0.65; }
+
+/* Botón con borde (OutlinedButton) */
+/* OutlinedButton */
+.btn-krono-outlined {
+  color: var(--krono-foreground);
+  border: 1px solid var(--krono-border);
+  border-radius: var(--krono-radius-md);
+  padding: 12px 18px;
+  font-size: 14px;
+  background: transparent;
+}
+.btn-krono-outlined:hover {
+  background: var(--krono-surface2);
+  color: var(--krono-foreground);
+  border-color: var(--krono-border);
+}
+
+/* Botón de texto plano (TextButton) */
+/* TextButton */
+.btn-krono-text {
+  color: var(--krono-primary);
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+.btn-krono-text:hover { color: var(--krono-primary); background: var(--krono-primary-soft); }
+
+/* Separadores horizontales con color de borde del tema */
+.krono-divider { border-color: var(--krono-border); opacity: 1; }

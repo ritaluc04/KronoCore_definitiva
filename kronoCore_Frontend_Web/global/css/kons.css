@@ -1,0 +1,64 @@
+/*
+ * kons.css — Design tokens de KronoCore (variables CSS globales).
+ * Colores, espaciado, radios, sombras y breakpoint; incluye tema oscuro.
+ */
+
+/**
+ * kons.dart → CSS
+ * KronoCore design tokens — equivalentes a los HSL del documento UI/UX.
+ */
+
+/* Variables en :root disponibles en toda la aplicación */
+:root {
+  /* KronoColors */
+  --krono-primary: #1d4ed8;
+  --krono-primary-fg: #ffffff;
+  --krono-primary-soft: #e0e7ff;
+  --krono-background: #ffffff;
+  --krono-surface1: #fafbfc;
+  --krono-surface2: #f1f5f9;
+  --krono-border: #e2e8f0;
+  --krono-foreground: #0f172a;
+  --krono-muted: #64748b;
+  --krono-accent: #06b6d4;
+  --krono-success: #16a34a;
+  --krono-warning: #f59e0b;
+  --krono-danger: #dc2626;
+  --krono-info: #3b82f6;
+
+  /* Escala de espaciado (márgenes y paddings) */
+  /* KronoSpacing */
+  --krono-xs: 4px;
+  --krono-sm: 8px;
+  --krono-md: 12px;
+  --krono-lg: 16px;
+  --krono-xl: 24px;
+  --krono-xxl: 32px;
+  --krono-xxxl: 48px;
+
+  /* Radios de borde para cards, botones y chips */
+  /* KronoRadius */
+  --krono-radius-sm: 4px;
+  --krono-radius-md: 8px;
+  --krono-radius-lg: 12px;
+  --krono-radius-pill: 9999px;
+
+  /* Sombras para elevación sutil de componentes */
+  /* KronoShadows */
+  --krono-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.08);
+  --krono-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+
+  /* Breakpoint Flutter MediaQuery >= 900 */
+  --krono-bp-wide: 900px;
+}
+
+/* Sobrescritura de colores de superficie y texto en modo oscuro */
+body.dark-theme {
+  --krono-background: #0b1220;
+  --krono-surface1: #111a2e;
+  --krono-surface2: #182338;
+  --krono-border: #2c3a56;
+  --krono-foreground: #f3f7ff;
+  --krono-muted: #9aa8c3;
+}
+

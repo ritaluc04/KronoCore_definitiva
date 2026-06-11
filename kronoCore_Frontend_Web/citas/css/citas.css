@@ -1,0 +1,50 @@
+/**
+ * Estilos del calendario diario de citas: rejilla de horas y bloques posicionados.
+ */
+
+/* Contenedor del calendario dentro de la tarjeta Krono */
+.CitasScreen-calendar {
+  height: 600px;
+  padding: 8px;
+}
+
+/* Layout horizontal: columna de horas + zona de franjas y citas */
+.CitasScreen-grid {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* Columna fija con etiquetas 08:00–22:00 */
+.CitasScreen-hours {
+  flex-shrink: 0;
+}
+.CitasScreen-hourLabel {
+  height: 40px;
+  font-size: 11px;
+  color: var(--krono-muted);
+  padding-right: 8px;
+  padding-top: 2px;
+}
+
+/* Área donde se apilan filas horarias y bloques de cita (position: absolute) */
+.CitasScreen-slots {
+  flex: 1;
+  position: relative;
+}
+.CitasScreen-slotRow {
+  height: 40px;
+  border-top: 1px solid var(--krono-border);
+}
+
+/* Bloque visual de una cita; top/height se calculan en JS según inicio y duración */
+.CitasScreen-citaBlock {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border-left: 4px solid;
+  overflow: hidden;
+  font-size: 11px;
+}

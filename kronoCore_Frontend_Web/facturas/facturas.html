@@ -1,0 +1,134 @@
+<!-- =============================================================================
+     Pantalla de Facturación — KronoCore Frontend Web
+     Gestión de facturas emitidas, estados y métodos de pago.
+     ============================================================================= -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KronoCore · Facturas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link href="../global/css/kons.css" rel="stylesheet" />
+  <link href="../global/css/kons_app_theme.css" rel="stylesheet" />
+  <link href="../global/css/krono_widgets.css" rel="stylesheet" />
+  <link href="../global/css/app_layout.css" rel="stylesheet" />
+  <link href="css/facturas.css" rel="stylesheet" />
+</head>
+<body class="krono-app" data-route="/facturas">
+  <div id="app-shell-mount"></div>
+  <div id="page-content">
+    <div class="FacturasScreen krono-scroll-page">
+      <!-- Cabecera -->
+      <div class="d-flex flex-row align-items-center mb-3 flex-wrap gap-2">
+        <h2 class="krono-headline-medium mb-0">Facturación</h2>
+        <div class="flex-fill"></div>
+        <button type="button" class="btn btn-krono-primary" id="btnNuevaFactura">
+          <span class="material-symbols-outlined me-1" style="font-size:18px;vertical-align:middle">add</span>
+          Nueva factura
+        </button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="d-flex flex-row align-items-center mb-3 gap-2 flex-wrap">
+        <div style="max-width:250px;">
+          <input type="text" class="form-control krono-form-control" id="searchFactura" placeholder="Buscar factura..." />
+        </div>
+        <select class="form-select krono-form-select" id="filtroEstado" style="max-width:160px">
+          <option value="">Todos los estados</option>
+          <option value="emitida">Emitidas</option>
+          <option value="pagada">Pagadas</option>
+          <option value="vencida">Vencidas</option>
+          <option value="cancelada">Canceladas</option>
+        </select>
+      </div>
+
+      <!-- Resumen de facturación del mes -->
+      <div class="row g-3 mb-3" id="resumenFacturas"></div>
+
+      <!-- Listado -->
+      <div id="facturasTableWrap"></div>
+    </div>
+  </div>
+
+  <!-- Modal: Nueva/Editar Factura -->
+  <div class="modal fade" id="facturaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="facturaModalTitle">Nueva Factura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="factClienteId" />
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label krono-form-label">Cliente</label>
+              <input type="text" class="form-control krono-form-control" id="factCliente" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label krono-form-label">NIF Cliente</label>
+              <input type="text" class="form-control krono-form-control" id="factNif" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label krono-form-label">Método pago</label>
+              <select class="form-select krono-form-select" id="factMetodo">
+                <option value="tarjeta">Tarjeta</option>
+                <option value="efectivo">Efectivo</option>
+                <option value="transferencia">Transferencia</option>
+                <option value="bizum">Bizum</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label krono-form-label">Base Imponible</label>
+              <input type="number" class="form-control krono-form-control" id="factBase" step="0.01" value="0" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label krono-form-label">IVA %</label>
+              <select class="form-select krono-form-select" id="factIvaPct">
+                <option value="21">21%</option>
+                <option value="10">10%</option>
+                <option value="4">4%</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label krono-form-label">IVA Importe</label>
+              <input type="text" class="form-control krono-form-control" id="factIvaImp" readonly />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label krono-form-label">Total</label>
+              <input type="text" class="form-control krono-form-control" id="factTotal" readonly />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label krono-form-label">Estado</label>
+              <select class="form-select krono-form-select" id="factEstado">
+                <option value="emitida">Emitida</option>
+                <option value="pagada">Pagada</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-krono-text" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-krono-primary" id="btnSaveFactura">Emitir factura</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../global/js/models.js"></script>
+  <script src="../global/js/session.js"></script>
+  <script src="../global/js/api_client.js"></script>
+  <script src="../global/js/krono_widgets.js"></script>
+  <script src="../global/js/app_layout.js"></script>
+  <script src="js/facturas_controller.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initAppShell();
+      initFacturasScreen();
+    });
+  </script>
+</body>
+</html>

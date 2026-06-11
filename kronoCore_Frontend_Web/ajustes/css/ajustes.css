@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Ajustes — estilos del módulo
+   Perfil, listas de opciones, paneles y preferencias de usuario.
+   ========================================================================== */
+
+/* Elementos de lista de acciones (seguridad, sesiones, etc.) */
+.AjustesScreen .list-group-item-action {
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Tarjeta de panel de sección */
+.AjustesScreen .panel-card{border-radius:12px;border:1px solid var(--krono-border);background:var(--krono-background);padding:14px;margin-bottom:14px;box-shadow:0 1px 8px rgba(22,27,31,0.03)}
+
+/* Fila de preferencias (interruptores, selects) */
+.AjustesScreen .preferences-row{display:flex;gap:12px;align-items:center}

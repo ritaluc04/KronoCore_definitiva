@@ -1,0 +1,44 @@
+/**
+ * login/css/login.css
+ * Estilos de la pantalla de inicio de sesión y registro.
+ * Equivalente visual al login_page.dart del cliente móvil:
+ * fondo surface1, tarjeta centrada (máx. 420px) con padding 32px.
+ */
+
+/* Contenedor a pantalla completa: centra la tarjeta vertical y horizontalmente */
+.LoginScreen {
+  min-height: 100vh;
+  background: var(--krono-surface1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Tarjeta blanca con borde, sombra y radio del tema Krono */
+.LoginScreen-card {
+  max-width: 420px;
+  width: 100%;
+  padding: 32px;
+  background: var(--krono-background);
+  border-radius: var(--krono-radius-lg);
+  border: 1px solid var(--krono-border);
+  box-shadow: var(--krono-shadow-md);
+}
+
+/* Icono de marca en cuadrado con color primario */
+.LoginScreen-logo {
+  width: 56px;
+  height: 56px;
+  background: var(--krono-primary);
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.LoginScreen-logo .material-symbols-outlined { font-size: 30px; }
+
+/* Tipografía del encabezado del formulario (login o registro) */
+.LoginScreen-title { font-size: 22px; font-weight: 700; margin-top: 16px; }
+.LoginScreen-subtitle { color: var(--krono-muted); margin-top: 4px; }

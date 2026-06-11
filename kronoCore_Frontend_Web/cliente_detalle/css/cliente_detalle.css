@@ -1,0 +1,37 @@
+/**
+ * Estilos de la pantalla Cliente detalle: bloque de pestañas y etiquetas de campos.
+ */
+
+/* Contenedor de pestañas (Datos, Historial, Compras, Notas) */
+.ClienteDetalleScreen-tabs {
+  background: var(--krono-background);
+  border: 1px solid var(--krono-border);
+  border-radius: var(--krono-radius-lg);
+  overflow: hidden;
+}
+.ClienteDetalleScreen-tabs .nav-tabs {
+  border-bottom-color: var(--krono-border);
+}
+.ClienteDetalleScreen-tabs .nav-link {
+  color: var(--krono-muted);
+  border: none;
+}
+.ClienteDetalleScreen-tabs .nav-link.active {
+  color: var(--krono-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--krono-primary);
+}
+
+/* Área de contenido de cada pestaña */
+.ClienteDetalleScreen-tabPane {
+  min-height: 320px;
+  padding: 20px;
+}
+
+/* Etiqueta superior en formato clave-valor (p. ej. «EMAIL») */
+.ClienteDetalleScreen-kv-label {
+  color: var(--krono-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

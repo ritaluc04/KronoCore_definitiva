@@ -1,0 +1,32 @@
+/**
+ * Estilos del asistente «Solicitar cita»: indicador de pasos y paneles de cada etapa.
+ */
+
+/* Barra de progreso horizontal (puntos por paso del wizard) */
+.SolicitarCitaScreen-stepper .step-indicator {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.SolicitarCitaScreen-stepper .step-dot {
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--krono-border);
+}
+.SolicitarCitaScreen-stepper .step-dot--active {
+  background: var(--krono-primary);
+}
+
+/* Título del paso actual dentro del stepper */
+.SolicitarCitaScreen-stepTitle {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+/* Área mínima del contenido dinámico de cada paso */
+.SolicitarCitaScreen-pane {
+  min-height: 160px;
+}
